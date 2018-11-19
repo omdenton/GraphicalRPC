@@ -1,13 +1,7 @@
 let winner;
-let result = 0;
-for (i=0; i<=5; i++)
-{
-roundScore = turn();
-result = result + roundScore;
-}
-result > 0 ? console.log('You Win!') : console.log('You Lose!'); 
-function computerPlay() 
+
 // Obtains the computers random answer
+function computerPlay() 
 {
   const rand = Math.floor(Math.random() * (3));
 
@@ -22,8 +16,9 @@ function computerPlay()
       break;
   }
 }
-function playerPlay()
+
 //Obtains the answer from the user
+function playerPlay()
 {
   let playerChoice = prompt('Please enter your choice: Rock, Paper, Or Scissors?').toLowerCase();
   switch (playerChoice) 
@@ -40,7 +35,7 @@ function playerPlay()
     playerPlay();
   }
 }
-
+//plays the round
 function turn()
 {
 
