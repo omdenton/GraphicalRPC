@@ -1,4 +1,5 @@
-let winner;
+
+
 
 // Obtains the computers random answer
 function computerPlay() 
@@ -17,50 +18,53 @@ function computerPlay()
   }
 }
 
-//Obtains the answer from the user
-function playerPlay()
+function upPlayerScore()
 {
-  let playerChoice = prompt('Please enter your choice: Rock, Paper, Or Scissors?').toLowerCase();
-  switch (playerChoice) 
-  {
-    case 'rock':
-    return 'Rock';
-  case 'scissors':
-    return 'Scissors';
-  case 'paper':
-    return 'Paper';
-  
-    default:
-    console.log('i dont think ' + playerChoice + ' was an option, lets try again...');
-    playerPlay();
-  }
+  playerScore.value++;
+  playerScore.innerHTML = playerScore.value;
 }
-//plays the round
-function turn()
-{
 
+function upComputerScore()
+{
+  computerScore.value++;
+  computerScore.innerHTML = computerScore.value;
+}
+
+
+//plays the round
+function turn(answer)
+{
+  let playerScore = document.getElementById("playerScore");
+  let computerScore = document.getElementById("computerScore");
+
+
+  document.getElementById(answer).classList.add('pressed');
+  playerAnswer = answer; 
   let computerAnswer = computerPlay();
-  let playerAnswer = playerPlay();
 
   //Tie Test first
   if (playerAnswer == computerAnswer)
   {
     console.log('Tie!');
-    return 0;
+   
   }
   //Player answers rock
   if (playerAnswer == 'Rock') 
   {
+    
+    
     if (computerAnswer == 'Paper')
     {
       console.log('Paper beats Rock, sorry!');
-      return -1;
+      upComputerScore();
     }  
     if (computerAnswer == 'Scissors')
     {
       console.log('Rock beats Scissors, you win!');
-      return 1;
+        upPlayerScore();
     }  
+    
+    document.getElementById(answer).classList.remove('pressed');
   }
 
   //Player answers Scissors
@@ -69,12 +73,12 @@ function turn()
     if (computerAnswer == 'Rock')
     {
       console.log('Rock beats Scissors, sorry!');
-      return -1;
+      upComputerScore();
     }  
     if (computerAnswer == 'Paper')
     {
       console.log('Scissors beats paper , you win!');
-      return 1;
+     upPlayerScore(); 
     }  
   }
 
@@ -84,12 +88,12 @@ if (playerAnswer == 'Paper')
   if (computerAnswer == 'Scissors')
   {
     console.log('Scissors beats Paper, sorry!');
-    return -1;
+    upComputerScore();
   }  
   if (computerAnswer == 'Paper')
   {
     console.log('Scissors beats Paper, you win!');
-    return 1;
+    upPlayerScore();
   }  
 }
   

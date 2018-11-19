@@ -11,10 +11,21 @@
 <body>
    
 <div class = "buttons"> 
-    <div class = "button"> <choice> <img src ="rock.png"></img> </choice> </div>
-    <div class = "button"> <choice> <img src ="paper.png"></img> </choice> </div>
-    <div class = "button"> <choice> <img src ="scissors.png"></img> </choice> </div>
-</div>    
+    <div class = "button" id="Rock" onclick="turn('Rock')"> 
+        <choice> <img src ="rock.png"></img> </choice>  </div>
+    <div class = "button" id="Paper" onclick="turn('Paper')"> 
+        <choice> <img src ="paper.png"></img> </choice> </div>
+        <div class = "button" id="Scissors" onclick="turn('Scissors')"> 
+        <choice> <img src ="scissors.png"></img> </choice> </div>
+</div>   
+
+<div class = "score" id = "score">
+
+    <h1>Player</h1>
+  <li value = 0  class = "scores"id = "playerScore"></li> 
+  <h1>Computer</h1>
+  <li value = 0 class = "scores" id = "computerScore" ></li> 
+</div>
 
 </body>
 </html>
