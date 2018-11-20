@@ -22,12 +22,22 @@ function upPlayerScore()
 {
   playerScore.value++;
   playerScore.innerHTML = playerScore.value;
+  if (playerScore.value > 4)
+{
+  window.alert("You win!");
+}
+
+
 }
 
 function upComputerScore()
 {
   computerScore.value++;
   computerScore.innerHTML = computerScore.value;
+  if (computerScore.value > 4)
+  {
+    window.alert("Computer Wins!");
+  }
 }
 
 
@@ -38,7 +48,11 @@ function turn(answer)
   let computerScore = document.getElementById("computerScore");
 
 
+  document.getElementById('Rock').classList.remove('pressed');
+  document.getElementById('Paper').classList.remove('pressed');
+  document.getElementById('Scissors').classList.remove('pressed');
   document.getElementById(answer).classList.add('pressed');
+  
   playerAnswer = answer; 
   let computerAnswer = computerPlay();
 
@@ -46,7 +60,7 @@ function turn(answer)
   if (playerAnswer == computerAnswer)
   {
     console.log('Tie!');
-   
+    
   }
   //Player answers rock
   if (playerAnswer == 'Rock') 
@@ -64,7 +78,6 @@ function turn(answer)
         upPlayerScore();
     }  
     
-    document.getElementById(answer).classList.remove('pressed');
   }
 
   //Player answers Scissors
@@ -94,7 +107,9 @@ if (playerAnswer == 'Paper')
   {
     console.log('Scissors beats Paper, you win!');
     upPlayerScore();
-  }  
+  } 
+
+
 }
   
 }
